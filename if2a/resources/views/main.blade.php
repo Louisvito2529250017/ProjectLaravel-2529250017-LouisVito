@@ -349,6 +349,10 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="periode" class="nav-link">
+                  <i class="nav-icon bi bi-building"></i>
+                  <p>Periode</p>
+                </a>
               </li>
               <li class="nav-item">
                 <a href="prodi" class="nav-link">
@@ -396,7 +400,7 @@
                 <!-- Default box -->
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Title</h3>
+                    
 
                     <div class="card-tools">
                       <button
@@ -408,19 +412,10 @@
                         <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
                         <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
                       </button>
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        data-lte-toggle="card-remove"
-                        title="Remove"
-                      >
-                        <i class="bi bi-x-lg"></i>
-                      </button>
                     </div>
                   </div>
                   <div class="card-body">@yield('content')</div>
                   <!-- /.card-body -->
-                  <div class="card-footer">Footer</div>
                   <!-- /.card-footer-->
                 </div>
                 <!-- /.card -->

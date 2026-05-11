@@ -21,7 +21,7 @@ class FakultasController extends Controller
      */
     public function create()
     {
-        //
+        return view('fakultas.create');
     }
 
     /**
@@ -29,7 +29,16 @@ class FakultasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $input=$request->validate([
+            'nama_fakultas'=>'required|
+            unique:fakultas',
+            'alias_fakultas'=>'required'
+        ]);
+        // Simpan data ke tabel fakultas
+        Fakultas::create($input);
+        // redirect ke route fakultas.index
+        return redirect()->route('fakultas.index');
     }
 
     /**
