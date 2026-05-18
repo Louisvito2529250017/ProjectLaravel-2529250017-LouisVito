@@ -1,7 +1,8 @@
 @extends('main')
 @section('title','Program Studi')
 @section('content')
-<table border="1" cellpadding="10">
+<a href="{{route('prodi.create')}}" class="btn btn-primary">Tambah Prodi</a>
+<table class="table table-bordered text-center">
     <tr style="text-align: center">
         <th>No</th>
         <th>Nama Prodi</th>

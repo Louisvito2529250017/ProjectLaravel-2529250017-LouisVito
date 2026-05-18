@@ -1,5 +1,5 @@
 @extends('main')
-@section('title','Tambah Prodi')
+@section('title','Tambah Program Studi')
 @section('content')
     <form action="{{route('prodi.store')}}" method="post">
         <div class="form-group">
@@ -17,15 +17,22 @@
             <div class="text-danger">{{$message}}</div>   
         @enderror
         <div class="form-group">
-            <label for="">Kaprodi</label>
+            <label for="">Kepala Program Studi</label>
             <input type="text" name="kaprodi" class="form-control">
         </div>
         @error('kaprodi')
             <div class="text-danger">{{$message}}</div>   
         @enderror
         <div class="form-group">
-            <label for="">Id Fakultas</label>
-            <input type="text" name="fakultas" class="form-control">
+            <label for="">Fakultas</label>
+            <select name="fakultas_id" class="form-control">
+                <option value="">Pilih Fakultas</option>
+                @foreach ($fakultas as $row)
+                    <option value="{{$row->id}}" {{old('fakultas_id') == $row->id ? 'selected':''}}>
+                        {{$row->nama_fakultas}}
+                    </option>
+                @endforeach
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
     </form>
