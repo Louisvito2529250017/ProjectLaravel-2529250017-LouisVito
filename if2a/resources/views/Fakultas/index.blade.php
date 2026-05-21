@@ -13,6 +13,8 @@
             <td>{{$fakultas->nama_fakultas}}</td>
             <td>{{$fakultas->alias_fakultas}}</td>
             <td>
+                <a href="{{route('fakultas.edit')}}" class="btn btn-warning btn-rounded">Edit</a>
+
                 <form method="POST" action="{{route('fakultas.destroy',$fakultas->id)}}">
                     @csrf
                     <input type="hidden" name="_method" value="DELETE">

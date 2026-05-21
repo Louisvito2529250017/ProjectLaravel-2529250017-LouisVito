@@ -64,7 +64,14 @@ class ProdiController extends Controller
      */
     public function update(Request $request, prodi $prodi)
     {
-        //
+        $input = $request->validate([
+            'nama_prodi'=>'required|unique:prodi,nama_prodi,'.$prodi,
+            'singkatan'=>'required',
+            'kaprodi'=>'required',
+            'fakultas_id'=>'required'
+        ]);
+        prodi::where('id',$prodi)->update($input);
+        return redirect()->route('Prodi.index');
     }
 
     /**
@@ -72,6 +79,8 @@ class ProdiController extends Controller
      */
     public function destroy(prodi $prodi)
     {
-        //
+        $prodi=Prodi::find($prodi,'id');
+        $prodi->delete();
+        return redirect()->route('Prodi.index');
     }
 }

@@ -1,0 +1,23 @@
+@extends('main')
+@section('title','Edit Periode')
+@section('content')
+    <form action="{{route('periode.update',$periode->id)}}" method="post">
+        @csrf
+        @method('PUT')
+        <div class="form-group">
+            <label for="">Tahun Akademik</label>
+            <input type="text" name="Tahun Akademik" class="form-control" value="{{old('tahun_akademik')??$periode->tahun_akademik}}">
+        </div>
+        @error('tahun_akademik')
+            <div class="text-danger">{{$message}}</div>   
+        @enderror
+        <div class="form-group">
+            <label for="">Semester</label>
+            <input type="text" name="semester" class="form-control" value="{{old('semester')??$periode->semester}}">
+        </div>
+        @error('semester')
+            <div class="text-danger">{{$message}}</div>   
+        @enderror
+        <button type="submit" class="btn btn-primary">Simpan</button>
+    </form>
+@endsection
