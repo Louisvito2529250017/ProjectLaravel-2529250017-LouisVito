@@ -357,7 +357,13 @@
               <li class="nav-item">
                 <a href="prodi" class="nav-link">
                   <i class="nav-icon bi bi-list-check"></i>
-                  <p>Prodi</p>
+                  <p>Program Studi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mahasiswa" class="nav-link">
+                  <i class="nav-icon bi bi-people"></i>
+                  <p>Mahasiswa</p>
                 </a>
               </li>
             </ul>

@@ -13,7 +13,7 @@
             <td>{{$fakultas->nama_fakultas}}</td>
             <td>{{$fakultas->alias_fakultas}}</td>
             <td>
-                <a href="{{route('fakultas.edit')}}" class="btn btn-warning btn-rounded">Edit</a>
+                <a href="{{route('fakultas.edit',$fakultas->id)}}" class="btn btn-warning btn-rounded">Edit</a>
 
                 <form method="POST" action="{{route('fakultas.destroy',$fakultas->id)}}">
                     @csrf

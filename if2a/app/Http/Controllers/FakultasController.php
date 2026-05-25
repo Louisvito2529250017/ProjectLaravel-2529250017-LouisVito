@@ -54,8 +54,8 @@ class FakultasController extends Controller
      */
     public function edit(Fakultas $fakultas)
     {
-        $fakultas=fakultas::find($fakultas);
-        return view('Fakultas.edit',compact($fakultas));
+        $fakultas=Fakultas::find($fakultas);
+        return view('fakultas.edit',compact($fakultas));
     }
 
     /**
