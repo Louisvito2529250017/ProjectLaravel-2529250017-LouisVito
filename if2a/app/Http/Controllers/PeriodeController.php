@@ -53,7 +53,7 @@ class PeriodeController extends Controller
     public function edit(Periode $periode)
     {
        $periode=Periode::find($periode);
-        return view('Periode.edit',compact($periode));
+        return view('Periode.edit',compact('periode'));
     }
 
     /**

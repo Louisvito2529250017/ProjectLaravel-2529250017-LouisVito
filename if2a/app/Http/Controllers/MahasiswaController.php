@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
+use App\Models\prodi;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -21,7 +22,8 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        //
+        $prodi = Prodi::all();
+        return view('mahasiswa.create', compact('prodi'));
     }
 
     /**
@@ -29,28 +31,27 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //input validation
-        $request->validate([
-            'npm'=>'required|unique:mahasiswa,npm',
-            'nama'=>'required',
-            'prodi_id'=>'required|exists:prodi,id',
-            'foto'=>'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        //validasi input 
+        $input = $request->validate([
+            'npm' => 'required|unique:mahasiswas,npm', // npm harus unik di tabel mahasiswas
+            'nama' => 'required',
+            'prodi_id' => 'required|exists:prodis,id', // prodi_id harus ada di tabel prodis
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        //upload
-        if($request->hasFile('foto')){
-            $foto=$request->file('foto');
-            $nama_foto=time().'_'.$foto->getClientOriginalName();
-            $foto->storeAs('fotos',$nama_foto,'public');//storage/app/public/fotos
-        }else{
-            $nama_foto=null;
+        //upload foto
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto'); // ambil file foto
+            $nama_foto = time() . '_' . $foto->getClientOriginalName(); // buat nama unik untuk foto
+            $foto->storeAs('fotos', $nama_foto, 'public'); // simpan foto di folder storage/app/public/fotos
+        } else {
+            $nama_foto = null; // jika tidak ada foto, set nama_foto ke null
         }
-        $input['foto']=$nama_foto;
-        //save
+        $input['foto'] = $nama_foto; // tambahkan nama_foto ke data input
+        //simpan data ke database
         Mahasiswa::create($input);
-        //redirect
-        return redirect()->route('mahasiswa.index')->with('success','Mahasiswa berhasil ditambahkan.');
-        }
-
+        //redirect ke halaman index dengan pesan sukses
+        return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa berhasil ditambahkan.');
+    }
     /**
      * Display the specified resource.
      */
